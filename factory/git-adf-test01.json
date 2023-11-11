@@ -1,0 +1,9 @@
+{
+	"name": "git-adf-test01",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "424ffc3d-a009-4331-91bd-1b7eb38bed8d",
+		"tenantId": "26f124d4-cf1a-4ebb-9d51-94bae48fbad3"
+	}
+}
