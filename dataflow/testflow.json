@@ -1,6 +1,7 @@
 {
-	"name": "flow1",
+	"name": "testflow",
 	"properties": {
+		"description": "hii",
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
@@ -12,8 +13,24 @@
 					"name": "inputSource"
 				}
 			],
-			"sinks": [],
-			"transformations": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Json1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1",
+					"rejectedDataLinkedService": {
+						"referenceName": "AzureDataLakeStorage1",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
+			"transformations": [
+				{
+					"name": "filter1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          ProductID as string,",
@@ -23,7 +40,18 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> inputSource"
+				"     ignoreNoFilesFound: false) ~> inputSource",
+				"inputSource filter(ListPrice>\"3000\",",
+				"     partitionBy('roundRobin', 2)) ~> filter1",
+				"filter1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     outputAssertFailedRows: true,",
+				"     assertFailure_fileSystem: 'filersl') ~> sink1"
 			]
 		}
 	}
