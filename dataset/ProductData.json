@@ -1,0 +1,41 @@
+{
+	"name": "ProductData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Source_link_copy",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SourceSet"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "productdetails.csv",
+				"folderPath": "bronze",
+				"fileSystem": "local-c-drive"
+			},
+			"columnDelimiter": ",",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": false,
+			"quoteChar": ""
+		},
+		"schema": [
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "name",
+				"type": "String"
+			},
+			{
+				"name": "price",
+				"type": "String"
+			}
+		]
+	}
+}
