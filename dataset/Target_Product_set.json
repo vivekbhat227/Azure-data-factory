@@ -1,0 +1,21 @@
+{
+	"name": "Target_Product_set",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Source_link_copy",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TargetDataSet"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "silver",
+				"fileSystem": "local-d-drive"
+			}
+		}
+	}
+}
